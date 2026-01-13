@@ -1,6 +1,6 @@
 # Ilarri - Plataforma de Acompañamiento Emocional y Psicología Clínica
 
-![Illari Banner](C:\Users\Antonio\Documents\Residencia\ILARRI\FRONTEND\public\logo1.png)  
+![Illari Banner]([C:\Users\Antonio\Documents\Residencia\ILARRI\FRONTEND\public\logo1.png](https://drive.google.com/file/d/1HXlG9OKmfdxOMAdl5JuH6eqSq2uvzY8e/view?usp=drive_link))  
 
 ## Descripción
 
