@@ -1,7 +1,6 @@
 # Ilarri - Plataforma de Acompañamiento Emocional y Psicología Clínica
 
-![Illari Banner](https://via.placeholder.com/1200x400/2d6cdf/ffffff?text=Illari+-+Decide+Resplandecer)  
-*(Puedes reemplazar esta imagen placeholder con tu banner real)*
+![Illari Banner](C:\Users\Antonio\Documents\Residencia\ILARRI\FRONTEND\public\logo1.png)  
 
 ## Descripción
 
