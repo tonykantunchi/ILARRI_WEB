@@ -158,11 +158,10 @@ npm test
 ## Autores
 - **github:** [Angel Antonio Kantun Chi](https://github.com/tonykantunchi)
 
-- **github:** [Luis Angel Haas Aguayo](https://github.com<img width="1259" height="900" alt="Captura de pantalla 2025-12-19 115105" src="https://github.com/user-attachments/assets/f5c80ba7-d87d-47e5-9879-b20021da8de6" />
-/LuisHaasAguayo)
+- **github:** [Luis Angel Haas Aguayo](https://github.com/LuisHaasAguayo)
 ## Licencia
 
 - Derechos reservados. Este proyecto no puede ser copiado ni distribuido sin el permiso explícito de los autores.
 ## Capturas
-![Uploading Captura de pantalla 2025-12-19 115105.png…]()
+<img width="1259" height="900" alt="Captura de pantalla 2025-12-19 115105" src="https://github.com/user-attachments/assets/f5c80ba7-d87d-47e5-9879-b20021da8de6" />
 
