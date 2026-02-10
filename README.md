@@ -28,6 +28,15 @@ La aplicación consta de un frontend desarrollado en React para una interfaz int
 - NPM para manejo de dependencias en frontend
 - Tailwind CSS con PostCSS y Autoprefixer
 ## Requisitos Previos
+### Frontend(React)
+- Node.js v18.x (recomendado usar NVM)
+- NPM o Yarn
+
+### Backend(Python, Flask)
+- Python 3.9+
+- Pip
+- Venv (entorno virtual)
+- PostgreSQL instalado y corriendo (con una base de datos creada)
 ## Estructura del proyecto
 
 
@@ -78,15 +87,6 @@ Ilarri/
 └── tailwind.config.js  
 ```
 
-### Frontend(React)
-- Node.js v18.x (recomendado usar NVM)
-- NPM o Yarn
-
-### Backend(Python, Flask)
-- Python 3.9+
-- Pip
-- Venv (entorno virtual)
-- PostgreSQL instalado y corriendo (con una base de datos creada)
 
 
 ## Instalación
