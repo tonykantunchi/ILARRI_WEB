@@ -166,11 +166,17 @@ npm test
 - **Inicio**
 <img width="1259" height="900" alt="Captura de pantalla 2025-12-19 115105" src="https://github.com/user-attachments/assets/f5c80ba7-d87d-47e5-9879-b20021da8de6" />
 <img width="567" height="240" alt="Inicio 2" src="https://github.com/user-attachments/assets/4444200c-5029-4f64-820a-2e792d8c8486" />
+
 - **Evaluacion**
+
 <img width="567" height="407" alt="Imagen1" src="https://github.com/user-attachments/assets/ef9cc40f-382a-42e6-878c-71ec3bdcc0c0" />
+
 ## Base de datos
+
 - **Tabla rango**
+
 <img width="576" height="240" alt="Rango" src="https://github.com/user-attachments/assets/b05085ef-9132-4572-bd89-776a004b4d65" />
+
 - **Tabla principal**
 <img width="576" height="159" alt="Basedatos" src="https://github.com/user-attachments/assets/0c697328-27e3-4d50-996e-4d4abab16e84" />
 
