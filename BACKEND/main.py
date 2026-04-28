@@ -3,6 +3,7 @@ from fastapi import FastAPI, Depends, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 import uuid
+import os
 
 import models
 import schemas
@@ -18,10 +19,25 @@ app = FastAPI(
     version="2.0.0",
 )
 
-# CORS — permite peticiones desde React
+# ── CORS: se configura según el entorno ──────────────────────────
+# En local se permite localhost:3000
+# En producción se lee desde la variable CORS_ORIGINS
+_env = os.getenv("ENVIRONMENT", "local")
+
+if _env == "production":
+    # En producción: solo tu dominio real (sin localhost)
+    _raw = os.getenv("CORS_ORIGINS", "https://tudominio.com")
+    allow_origins = [o.strip() for o in _raw.split(",")]
+else:
+    # En local: permite localhost con cualquier puerto común
+    allow_origins = [
+        "http://localhost:3000",
+        "http://127.0.0.1:3000",
+    ]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
+    allow_origins=allow_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -39,7 +55,11 @@ def get_db():
 # ── Health check ──────────────────────────────────────────────
 @app.get("/", tags=["Health"])
 def health_check():
-    return {"status": "ok", "proyecto": "Illari — Decide Resplandecer"}
+    return {
+        "status": "ok",
+        "proyecto": "Illari — Decide Resplandecer",
+        "entorno": _env,
+    }
 
 
 # ── Categorías ────────────────────────────────────────────────
@@ -51,10 +71,6 @@ def listar_categorias(db: Session = Depends(get_db)):
 # ── Crear resultado ───────────────────────────────────────────
 @app.post("/resultados", response_model=schemas.ResultadoOut, status_code=201, tags=["Resultados"])
 def crear_resultado(resultado: schemas.ResultadoCreate, db: Session = Depends(get_db)):
-    """
-    Recibe el resultado del test desde el frontend.
-    Busca la categoría según el promedio y guarda el registro.
-    """
     from decimal import Decimal
     promedio_decimal = Decimal(str(round(resultado.promedio, 2)))
 
@@ -67,7 +83,6 @@ def crear_resultado(resultado: schemas.ResultadoCreate, db: Session = Depends(ge
         .first()
     )
 
-    # Si no encuentra por rango exacto, busca la más cercana
     if not categoria:
         todas = db.query(CategoriaResultado).all()
         for cat in todas:
@@ -78,8 +93,7 @@ def crear_resultado(resultado: schemas.ResultadoCreate, db: Session = Depends(ge
     if not categoria:
         raise HTTPException(
             status_code=400,
-            detail=f"No hay categoría para promedio={resultado.promedio}. "
-                   "Verifica que la tabla categorias_resultado esté poblada.",
+            detail=f"No hay categoría para promedio={resultado.promedio}.",
         )
 
     nuevo = ResultadoTest(
