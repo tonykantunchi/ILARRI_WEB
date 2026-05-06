@@ -102,17 +102,9 @@ Ilarri/
 ```bash
 sudo -u postgres psql
 ```
-- Crear el usuario 'soporte' con contraseña
+- usar default al usuario
 ```bash
-CREATE USER soporte WITH PASSWORD '1234';
-```
-- Crear la base de datos 'ilarri' y asignar propietario
-```bash
-CREATE DATABASE ilarri OWNER soporte;
-```
-- Dar todos los privilegios al usuario sobre esa base de datos
-```bash
-GRANT ALL PRIVILEGES ON DATABASE ilarri TO soporte;;
+usuario postgres
 ```
 ## Configurar el Backend
 - Crear y activar entorno virtual
