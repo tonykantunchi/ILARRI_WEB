@@ -4,11 +4,15 @@ from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 import uuid
 import os
+import stripe  # ← NUEVO
 
 import models
 import schemas
 from models import CategoriaResultado, ResultadoTest
 from database import engine, SessionLocal
+
+# ── Stripe config ────────────────────────────────────────────
+stripe.api_key = os.getenv("STRIPE_SECRET_KEY")
 
 # Crear tablas si no existen
 models.Base.metadata.create_all(bind=engine)
@@ -19,17 +23,13 @@ app = FastAPI(
     version="2.0.0",
 )
 
-# ── CORS: se configura según el entorno ──────────────────────────
-# En local se permite localhost:3000
-# En producción se lee desde la variable CORS_ORIGINS
+# ── CORS ─────────────────────────────────────────────────────
 _env = os.getenv("ENVIRONMENT", "local")
 
 if _env == "production":
-    # En producción: solo tu dominio real (sin localhost)
     _raw = os.getenv("CORS_ORIGINS", "https://tudominio.com")
     allow_origins = [o.strip() for o in _raw.split(",")]
 else:
-    # En local: permite localhost con cualquier puerto común
     allow_origins = [
         "http://localhost:3000",
         "http://127.0.0.1:3000",
@@ -43,14 +43,12 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
 def get_db():
     db = SessionLocal()
     try:
         yield db
     finally:
         db.close()
-
 
 # ── Health check ──────────────────────────────────────────────
 @app.get("/", tags=["Health"])
@@ -61,12 +59,22 @@ def health_check():
         "entorno": _env,
     }
 
+# ── STRIPE: Crear Payment Intent ─────────────────────────────
+@app.post("/api/create-payment-intent", tags=["Pagos"])
+async def create_payment_intent(data: dict):
+    try:
+        intent = stripe.PaymentIntent.create(
+            amount=int(data["amount"]),  # centavos (ej: 1000 = $10.00)
+            currency=data["currency"].lower(),  # "mxn" o "cop"
+        )
+        return {"clientSecret": intent.client_secret}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
 # ── Categorías ────────────────────────────────────────────────
 @app.get("/categorias", response_model=list[schemas.CategoriaOut], tags=["Categorías"])
 def listar_categorias(db: Session = Depends(get_db)):
     return db.query(CategoriaResultado).order_by(CategoriaResultado.promedio_min).all()
-
 
 # ── Crear resultado ───────────────────────────────────────────
 @app.post("/resultados", response_model=schemas.ResultadoOut, status_code=201, tags=["Resultados"])
@@ -110,7 +118,6 @@ def crear_resultado(resultado: schemas.ResultadoCreate, db: Session = Depends(ge
     db.refresh(nuevo)
     return nuevo
 
-
 # ── Listar resultados ─────────────────────────────────────────
 @app.get("/resultados", response_model=list[schemas.ResultadoOut], tags=["Resultados"])
 def listar_resultados(limit: int = 20, db: Session = Depends(get_db)):
@@ -120,7 +127,6 @@ def listar_resultados(limit: int = 20, db: Session = Depends(get_db)):
         .limit(limit)
         .all()
     )
-
 
 # ── Estadísticas ──────────────────────────────────────────────
 @app.get("/estadisticas", tags=["Estadísticas"])
