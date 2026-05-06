@@ -1,5 +1,6 @@
 -- =============================================
 -- Base de Datos: illari_db
+-- USUARIO POSTGRES
 -- Test Emocional Illari — Decide Resplandecer
 -- =============================================
 
