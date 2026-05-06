@@ -1,7 +1,7 @@
 
-# Ilarri - Plataforma de Acompañamiento Emocional y Psicología Clínica
+# Illari - Plataforma de Acompañamiento Emocional y Psicología Clínica
 
-Ilarri es una plataforma web diseñada para ofrecer acompañamiento emocional y servicios de psicología clínica. El objetivo es proporcionar herramientas para el bienestar emocional, incluyendo tests interactivos que evalúan niveles de riesgo o estados emocionales, y almacenan resultados de manera segura en una base de datos.
+Illari es una plataforma web diseñada para ofrecer acompañamiento emocional y servicios de psicología clínica. El objetivo es proporcionar herramientas para el bienestar emocional, incluyendo tests interactivos que evalúan niveles de riesgo o estados emocionales, y almacenan resultados de manera segura en una base de datos.
 La aplicación consta de un frontend desarrollado en React para una interfaz intuitiva y atractiva, y un backend en Python con Flask para manejar la lógica de negocio, almacenamiento de datos y API RESTful. Utiliza PostgreSQL como base de datos para persistir los resultados de los tests.
 
 ## Tecnologías Usadas
@@ -128,7 +128,11 @@ pip install -r requirements.txt
 ```
 - Crea un archivo .env en la carpeta backend/ con:
 ```bash
-DATABASE_URL=postgresql://soporte:1234@localhost:5432/ilarri
+DATABASE_URL=postgresql://postgres:1234@localhost:5432/illari_db 
+```
+- Descargar los archivos .env del Frontend y Backend
+```bash
+Pedir link
 ```
 - Inicia el servidor backend:
 ```bash
