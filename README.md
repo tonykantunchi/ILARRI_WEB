@@ -118,10 +118,6 @@ source .venv/bin/activate
 cd backend
 pip install -r requirements.txt
 ```
-- Crea un archivo .env en la carpeta backend/ con:
-```bash
-DATABASE_URL=postgresql://postgres:1234@localhost:5432/illari_db 
-```
 - Descargar los archivos .env del Frontend y Backend
 ```bash
 Los archivos van en la raíz del frontend y backend 
