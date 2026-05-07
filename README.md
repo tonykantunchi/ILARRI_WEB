@@ -124,7 +124,7 @@ DATABASE_URL=postgresql://postgres:1234@localhost:5432/illari_db
 ```
 - Descargar los archivos .env del Frontend y Backend
 ```bash
-Pedir link
+Los archivos van en la raíz del frontend y backend 
 ```
 - Inicia el servidor backend:
 ```bash
