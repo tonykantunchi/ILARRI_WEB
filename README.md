@@ -2,7 +2,7 @@
 # Illari - Plataforma de Acompañamiento Emocional y Psicología Clínica
 
 Illari es una plataforma web diseñada para ofrecer acompañamiento emocional y servicios de psicología clínica. El objetivo es proporcionar herramientas para el bienestar emocional, incluyendo tests interactivos que evalúan niveles de riesgo o estados emocionales, y almacenan resultados de manera segura en una base de datos.
-La aplicación consta de un frontend desarrollado en React para una interfaz intuitiva y atractiva, y un backend en Python con Flask para manejar la lógica de negocio, almacenamiento de datos y API RESTful. Utiliza PostgreSQL como base de datos para persistir los resultados de los tests.
+La aplicación consta de un frontend desarrollado en React para una interfaz intuitiva y atractiva, y un backend en Python con Flask para manejar la lógica de negocio, almacenamiento de datos y API REST. Utiliza PostgreSQL como base de datos para persistir los resultados de los tests.
 
 ## Tecnologías Usadas
 
