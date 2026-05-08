@@ -45,6 +45,7 @@ La aplicación consta de un frontend desarrollado en React para una interfaz int
 Ilarri/
 
 ├── backend/
+│   ├── .env
 
 │   ├── database.py      
 
@@ -57,7 +58,7 @@ Ilarri/
 │   └── schemas.py      
 
 ├── frontend/
-
+│   ├── .env
 │   ├── public/          
 
 │   ├── src/
