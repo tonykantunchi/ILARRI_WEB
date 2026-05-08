@@ -15,6 +15,7 @@ La aplicación consta de un frontend desarrollado en React para una interfaz int
 - Axios para llamadas API
 - Librerías adicionales: React Icons, Web Vitals
 **Backend(Flask):**
+- Stripe para pasarela de pago 
 - Python 3.9+ con Flask
 - SQLAlchemy para ORM y manejo de DB
 - Psycopg2 para conexión con PostgreSQL
